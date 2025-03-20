@@ -1,0 +1,43 @@
+type User = 
+ record {
+   address: text;
+   dob: text;
+   email: text;
+   gender: text;
+   mobile: text;
+   name: text;
+ };
+type Result_1 = 
+ variant {
+   err: text;
+   ok: nat;
+ };
+type Result = 
+ variant {
+   err: text;
+   ok;
+ };
+type Metadata = 
+ record {
+   address: text;
+   description: text;
+   dob: text;
+   email: text;
+   gender: text;
+   image: text;
+   mobile: text;
+   name: text;
+ };
+service : {
+  balanceOf: (principal) -> (nat) query;
+  getMetadata: (nat) -> (opt Metadata) query;
+  getUser: (principal) -> (opt User) query;
+  mint: (principal, text, text) -> (Result_1);
+  ownerOf: (nat) -> (opt principal) query;
+  register: (text, text, text, text, text, text) -> (Result);
+  tokensOfOwner: (principal) -> (vec nat) query;
+  totalSupply: () -> (nat) query;
+  transfer: (principal, nat) -> (bool);
+  updateMetadata: (principal, nat, text, text, text, text, text, text, 
+   text, text) -> (bool);
+}
