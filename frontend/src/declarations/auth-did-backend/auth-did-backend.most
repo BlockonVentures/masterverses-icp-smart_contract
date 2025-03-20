@@ -1,0 +1,40 @@
+// Version: 1.0.0
+type Event =
+  {
+    creator : Principal;
+    date : Text;
+    description : Text;
+    eventId : Nat;
+    title : Text
+  };
+type Metadata =
+  {
+    address : Text;
+    description : Text;
+    dob : Text;
+    email : Text;
+    gender : Text;
+    image : Text;
+    mobile : Text;
+    name : Text
+  };
+type TransferEvent = {from : Principal; to : Principal; tokenId : Nat};
+type User =
+  {
+    address : Text;
+    dob : Text;
+    email : Text;
+    gender : Text;
+    mobile : Text;
+    name : Text
+  };
+actor {
+  stable var eventCounter : Nat;
+  stable var eventsEntries : [(Nat, Event)];
+  stable var metadataEntries : [(Nat, Metadata)];
+  stable var nftCounter : Nat;
+  stable var ownersEntries : [(Principal, [Nat])];
+  stable var tokensEntries : [(Nat, Principal)];
+  stable var transferEventsEntries : [TransferEvent];
+  stable var usersEntries : [(Principal, User)]
+};

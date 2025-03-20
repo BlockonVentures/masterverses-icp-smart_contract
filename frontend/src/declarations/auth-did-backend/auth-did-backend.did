@@ -1,0 +1,35 @@
+type User = 
+ record {
+   address: text;
+   dob: text;
+   email: text;
+   gender: text;
+   mobile: text;
+   name: text;
+ };
+type Result_1 = 
+ variant {
+   err: text;
+   ok: nat;
+ };
+type Result = 
+ variant {
+   err: text;
+   ok;
+ };
+type Event = 
+ record {
+   creator: principal;
+   date: text;
+   description: text;
+   eventId: nat;
+   title: text;
+ };
+service : {
+  createEvent: (principal, text, text, text) -> (Result_1);
+  getAllEvents: () -> (vec Event) query;
+  getUser: (principal) -> (opt User) query;
+  getUserEvents: (principal) -> (vec Event) query;
+  mint: (principal, text, text) -> (Result_1);
+  register: (principal, text, text, text, text, text, text) -> (Result);
+}
